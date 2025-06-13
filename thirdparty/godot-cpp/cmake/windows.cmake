@@ -70,19 +70,19 @@ endfunction()
 function( windows_generate )
     set( STATIC_CPP "$<BOOL:${GODOT_USE_STATIC_CPP}>")
 
-    set_target_properties( ${TARGET_NAME}
+    set_target_properties( godot-cpp
             PROPERTIES
             PDB_OUTPUT_DIRECTORY "$<1:${CMAKE_SOURCE_DIR}/bin>"
     )
 
-    target_compile_definitions(${TARGET_NAME}
+    target_compile_definitions(godot-cpp
         PUBLIC
             WINDOWS_ENABLED
             $<$<BOOL:${IS_MSVC}>:TYPED_METHOD_BIND>
             $<$<BOOL:${IS_MSVC}>:NOMINMAX>
     )
 
-    target_link_options( ${TARGET_NAME}
+    target_link_options( godot-cpp
             PUBLIC
 
             $<${NOT_MSVC}:
