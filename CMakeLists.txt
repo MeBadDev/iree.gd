@@ -13,6 +13,11 @@ project(
     LANGUAGES CXX C
 )
 
+# Set MSVC runtime to MD/MDd (Multi-threaded DLL)
+if(MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+endif()
+
 #-------------------------------------------------------------------------------
 # System packages and programs
 #-------------------------------------------------------------------------------

@@ -75,13 +75,11 @@ function( windows_generate )
             PDB_OUTPUT_DIRECTORY "$<1:${CMAKE_SOURCE_DIR}/bin>"
     )
 
-    target_compile_definitions( ${TARGET_NAME}
+    target_compile_definitions(${TARGET_NAME}
         PUBLIC
             WINDOWS_ENABLED
-            $<${IS_MSVC}:
-                TYPED_METHOD_BIND
-                NOMINMAX
-            >
+            $<$<BOOL:${IS_MSVC}>:TYPED_METHOD_BIND>
+            $<$<BOOL:${IS_MSVC}>:NOMINMAX>
     )
 
     target_link_options( ${TARGET_NAME}
